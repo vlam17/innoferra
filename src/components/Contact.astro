@@ -1,0 +1,196 @@
+---
+// PLACEHOLDER to configure before launch (see README):
+//  - FORM_ENDPOINT: your Formspree form URL, e.g. https://formspree.io/f/abcdwxyz
+const FORM_ENDPOINT = 'FORM_ENDPOINT';
+const CONTACT_EMAIL = 'ir@innoferra.ai';
+
+const offices = [
+  {
+    name: 'Massachusetts',
+    lines: ['101 Middlesex Turnpike', 'Burlington, MA 01803'],
+  },
+  {
+    name: 'Texas',
+    lines: ['Mockingbird Towers', '1341 West Mockingbird Lane', 'Dallas, TX 75247'],
+  },
+];
+---
+
+<section id="contact" class="relative overflow-hidden py-24 sm:py-32">
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true"></div>
+  <div
+    class="pointer-events-none absolute bottom-0 left-1/2 h-[420px] w-[900px] -translate-x-1/2 rounded-full opacity-60"
+    style="background: radial-gradient(closest-side, rgba(22,194,240,0.1), transparent 70%);"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="relative mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="grid gap-12 lg:grid-cols-[1fr_1.1fr]">
+      <div data-reveal>
+        <p class="text-[11px] font-semibold tracking-[0.25em] text-pulse-400 uppercase">Contact</p>
+        <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-mist-100 sm:text-5xl">
+          Let’s build the inference economy
+        </h2>
+        <p class="mt-5 text-lg leading-relaxed text-mist-400">
+          Tell us about your workload — dedicated clusters or managed inference — and we’ll get back to
+          you.
+        </p>
+
+        <p class="mt-8 text-sm text-mist-500">Prefer email?</p>
+        <a
+          href={`mailto:${CONTACT_EMAIL}`}
+          class="mt-1 inline-block font-display text-lg font-semibold text-pulse-300 underline-offset-4 hover:underline"
+        >
+          {CONTACT_EMAIL}
+        </a>
+
+        <div class="mt-10 grid grid-cols-1 gap-8 sm:grid-cols-2">
+          {
+            offices.map((office) => (
+              <div>
+                <h3 class="text-[11px] font-semibold tracking-[0.2em] text-mist-500 uppercase">
+                  {office.name} office
+                </h3>
+                <address class="mt-3 text-[15px] leading-relaxed text-mist-300 not-italic">
+                  {office.lines.map((line) => (
+                    <span class="block">{line}</span>
+                  ))}
+                </address>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
+      <form
+        method="POST"
+        action={FORM_ENDPOINT}
+        class="rounded-2xl border border-white/8 bg-void-900/70 p-7 sm:p-9"
+        data-contact-form
+        data-reveal
+        style="--reveal-delay: 120ms"
+      >
+        <!-- Honeypot: hidden from humans, catches bots -->
+        <p class="hidden" aria-hidden="true">
+          <label>
+            Leave this field empty
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" />
+          </label>
+        </p>
+
+        <div class="grid gap-5 sm:grid-cols-2">
+          <div class="flex flex-col gap-1.5">
+            <label for="cf-name" class="text-sm font-medium text-mist-300">Name <span class="text-pulse-400">*</span></label>
+            <input
+              id="cf-name"
+              name="name"
+              type="text"
+              required
+              autocomplete="name"
+              class="rounded-lg border border-white/10 bg-void-950/70 px-3.5 py-2.5 text-mist-100 placeholder-mist-500 outline-none focus:border-pulse-400"
+              placeholder="Jane Doe"
+            />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label for="cf-email" class="text-sm font-medium text-mist-300">Work email <span class="text-pulse-400">*</span></label>
+            <input
+              id="cf-email"
+              name="email"
+              type="email"
+              required
+              autocomplete="email"
+              class="rounded-lg border border-white/10 bg-void-950/70 px-3.5 py-2.5 text-mist-100 placeholder-mist-500 outline-none focus:border-pulse-400"
+              placeholder="jane@company.com"
+            />
+          </div>
+        </div>
+
+        <div class="mt-5 flex flex-col gap-1.5">
+          <label for="cf-company" class="text-sm font-medium text-mist-300">Company</label>
+          <input
+            id="cf-company"
+            name="company"
+            type="text"
+            autocomplete="organization"
+            class="rounded-lg border border-white/10 bg-void-950/70 px-3.5 py-2.5 text-mist-100 placeholder-mist-500 outline-none focus:border-pulse-400"
+            placeholder="Company, Inc."
+          />
+        </div>
+
+        <div class="mt-5 flex flex-col gap-1.5">
+          <label for="cf-message" class="text-sm font-medium text-mist-300">Message <span class="text-pulse-400">*</span></label>
+          <textarea
+            id="cf-message"
+            name="message"
+            required
+            rows="5"
+            class="resize-y rounded-lg border border-white/10 bg-void-950/70 px-3.5 py-2.5 text-mist-100 placeholder-mist-500 outline-none focus:border-pulse-400"
+            placeholder="Tell us about your workload, model, or capacity needs…"></textarea>
+        </div>
+
+        <button
+          type="submit"
+          class="mt-7 w-full rounded-full bg-pulse-500 px-7 py-3 font-semibold text-void-950 transition hover:bg-pulse-400 disabled:cursor-not-allowed disabled:opacity-60"
+        >
+          Send message
+        </button>
+
+        <p
+          class="mt-4 hidden rounded-lg border border-pulse-500/30 bg-pulse-500/10 px-4 py-3 text-sm text-pulse-300"
+          data-form-success
+          role="status"
+        >
+          Thanks — your message is on its way. We’ll be in touch shortly.
+        </p>
+        <p
+          class="mt-4 hidden rounded-lg border border-red-400/30 bg-red-400/10 px-4 py-3 text-sm text-red-300"
+          data-form-error
+          role="alert"
+        >
+          Something went wrong sending your message. Please try again, or email us directly at
+          <a href={`mailto:${CONTACT_EMAIL}`} class="font-semibold underline underline-offset-2">{CONTACT_EMAIL}</a>.
+        </p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Progressive enhancement: without JS the form still POSTs natively to the
+  // form backend; with JS we submit via fetch and show inline states.
+  const form = document.querySelector<HTMLFormElement>('[data-contact-form]');
+  const success = document.querySelector<HTMLElement>('[data-form-success]');
+  const error = document.querySelector<HTMLElement>('[data-form-error]');
+
+  form?.addEventListener('submit', async (event) => {
+    if (!form.checkValidity()) return; // let native validation UI handle it
+    event.preventDefault();
+
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    success?.classList.add('hidden');
+    error?.classList.add('hidden');
+    if (button) {
+      button.disabled = true;
+      button.textContent = 'Sending…';
+    }
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { Accept: 'application/json' },
+      });
+      if (!response.ok) throw new Error(`Form backend responded ${response.status}`);
+      form.reset();
+      success?.classList.remove('hidden');
+    } catch {
+      error?.classList.remove('hidden');
+    } finally {
+      if (button) {
+        button.disabled = false;
+        button.textContent = 'Send message';
+      }
+    }
+  });
+</script>

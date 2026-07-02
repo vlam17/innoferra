@@ -1,0 +1,154 @@
+---
+// Customer-facing technology story: proprietary serving engine, efficient
+// infrastructure, and why inference-era workloads reward it. From the deck's
+// "AI Token Factory", "The Moat" and "Why Now" slides.
+const edges = [
+  {
+    title: 'In-house inference engine',
+    body: 'Our proprietary serving stack delivers industry-leading time-to-first-token and throughput — extracting more tokens from every GPU-hour.',
+  },
+  {
+    title: 'Efficient by design',
+    body: 'Liquid-cooled, purpose-built data centers running at a PUE under 1.35 on low-cost affiliate-supplied power — efficiency that flows through to customer pricing.',
+  },
+  {
+    title: 'Built for sovereignty',
+    body: 'Single-tenant, isolated deployments give enterprises dedicated, compliant capacity with full data sovereignty.',
+  },
+];
+
+const why = [
+  {
+    title: 'Recurring & metered',
+    body: 'Production AI runs on inference. Workloads are continuous and metered — your infrastructure partner has to be built for always-on serving.',
+  },
+  {
+    title: 'Latency-sensitive',
+    body: 'User-facing AI rewards low time-to-first-token and high throughput — the core strengths of Innoferra’s serving platform.',
+  },
+];
+
+const partners = ['SGLang', 'EigenAI', 'Inco.AI'];
+---
+
+<section id="technology" class="relative py-24 sm:py-32">
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="text-[11px] font-semibold tracking-[0.25em] text-pulse-400 uppercase">Technology</p>
+      <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-mist-100 sm:text-5xl">
+        A software edge on efficient iron
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-mist-400">
+        More than a GPU landlord: a proprietary inference engine turns raw silicon into fast,
+        reliable token generation.
+      </p>
+    </div>
+
+    <!-- Animated token-flow diagram -->
+    <figure class="mt-14 overflow-hidden rounded-2xl border border-white/8 bg-void-900/70 p-6 sm:p-10" data-reveal style="--reveal-delay: 120ms">
+      <svg
+        viewBox="0 0 720 240"
+        class="mx-auto w-full max-w-3xl"
+        role="img"
+        aria-labelledby="tokenflow-title tokenflow-desc"
+      >
+        <title id="tokenflow-title">How the AI Token Factory works</title>
+        <desc id="tokenflow-desc">
+          Prompts flow into Innoferra's serving engine, which batches and routes them across the GPU
+          fleet and streams tokens back out with leading time-to-first-token.
+        </desc>
+
+        <!-- Input node -->
+        <rect x="20" y="90" width="130" height="60" rx="12" fill="none" stroke="rgba(198,207,226,0.25)"></rect>
+        <text x="85" y="116" text-anchor="middle" fill="#c6cfe2" font-size="14" font-weight="600">Prompts</text>
+        <text x="85" y="134" text-anchor="middle" fill="#71809f" font-size="11">apps · agents · APIs</text>
+
+        <!-- Flow in -->
+        <path d="M150 120 H 265" stroke="#16c2f0" stroke-width="2" fill="none" class="flow-line"></path>
+
+        <!-- Serving engine core -->
+        <g>
+          <rect x="270" y="50" width="180" height="140" rx="16" fill="rgba(22,194,240,0.06)" stroke="rgba(22,194,240,0.45)"></rect>
+          <rect x="270" y="50" width="180" height="140" rx="16" fill="none" stroke="#3fd9ff" stroke-opacity="0.5" class="core-glow"></rect>
+          <text x="360" y="86" text-anchor="middle" fill="#eef2fb" font-size="14" font-weight="700">Serving Engine</text>
+          <text x="360" y="104" text-anchor="middle" fill="#7ceaff" font-size="10" letter-spacing="2">PROPRIETARY</text>
+          <text x="360" y="130" text-anchor="middle" fill="#98a4c0" font-size="11">continuous batching</text>
+          <text x="360" y="147" text-anchor="middle" fill="#98a4c0" font-size="11">smart routing</text>
+          <text x="360" y="164" text-anchor="middle" fill="#98a4c0" font-size="11">GPU-fleet optimization</text>
+        </g>
+
+        <!-- GPU fleet beneath -->
+        <g aria-hidden="true">
+          <path d="M360 190 V 214" stroke="rgba(245,158,11,0.5)" stroke-width="2" class="flow-line"></path>
+          <text x="360" y="234" text-anchor="middle" fill="#ffb454" font-size="11" font-weight="600" letter-spacing="1.5">ELITE GPU FLEET</text>
+        </g>
+
+        <!-- Tokens out (three staggered streams) -->
+        <g aria-hidden="true">
+          <path d="M450 95 H 560" stroke="rgba(124,234,255,0.25)" stroke-width="1.5" fill="none"></path>
+          <path d="M450 120 H 560" stroke="rgba(124,234,255,0.25)" stroke-width="1.5" fill="none"></path>
+          <path d="M450 145 H 560" stroke="rgba(124,234,255,0.25)" stroke-width="1.5" fill="none"></path>
+          <circle cx="455" cy="95" r="4" fill="#7ceaff" class="token-dot"></circle>
+          <circle cx="455" cy="120" r="4" fill="#3fd9ff" class="token-dot" style="animation-delay: 0.7s"></circle>
+          <circle cx="455" cy="145" r="4" fill="#ffb454" class="token-dot" style="animation-delay: 1.4s"></circle>
+        </g>
+
+        <!-- Output node -->
+        <rect x="570" y="90" width="130" height="60" rx="12" fill="none" stroke="rgba(198,207,226,0.25)"></rect>
+        <text x="635" y="116" text-anchor="middle" fill="#c6cfe2" font-size="14" font-weight="600">Tokens</text>
+        <text x="635" y="134" text-anchor="middle" fill="#71809f" font-size="11">leading TTFT</text>
+      </svg>
+      <figcaption class="mt-6 text-center text-sm text-mist-500">
+        The AI Token Factory: prompts in, optimized batching and routing across the fleet, tokens out —
+        with leading time-to-first-token.
+      </figcaption>
+    </figure>
+
+    <div class="mt-14 grid gap-6 md:grid-cols-3">
+      {
+        edges.map((edge, i) => (
+          <div
+            class="rounded-2xl border border-white/8 bg-void-900/70 p-7 transition-colors hover:border-pulse-400/40"
+            data-reveal
+            style={`--reveal-delay: ${i * 100}ms`}
+          >
+            <h3 class="font-display text-lg font-semibold text-mist-100">{edge.title}</h3>
+            <p class="mt-3 text-[15px] leading-relaxed text-mist-400">{edge.body}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="mt-14 grid gap-10 lg:grid-cols-[1fr_auto] lg:items-start" data-reveal>
+      <div>
+        <h3 class="font-display text-xl font-bold text-mist-100 sm:text-2xl">Why inference, why now</h3>
+        <div class="mt-6 grid gap-6 sm:grid-cols-2">
+          {
+            why.map(({ title, body }) => (
+              <div class="border-l border-pulse-500/30 pl-5">
+                <h4 class="font-semibold text-mist-100">{title}</h4>
+                <p class="mt-2 text-[15px] leading-relaxed text-mist-400">{body}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+      <div class="rounded-2xl border border-white/8 bg-void-900/70 p-7 lg:max-w-xs">
+        <p class="text-[11px] font-semibold tracking-[0.2em] text-mist-500 uppercase">Ecosystem partners</p>
+        <ul class="mt-4 space-y-2" role="list">
+          {
+            partners.map((p) => (
+              <li class="font-display text-lg font-semibold text-mist-100">{p}</li>
+            ))
+          }
+        </ul>
+        <p class="mt-4 text-sm leading-relaxed text-mist-500">
+          Best-in-class open-source serving, optimization, and inference tooling — alongside our own
+          engine.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>

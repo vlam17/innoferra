@@ -1,0 +1,50 @@
+---
+// Collective team pedigree from the deck's "Operators, Builders, Financiers"
+// slide — described in prose, without naming prior firms or individuals.
+const pillars = [
+  {
+    title: 'Deep technology & AI',
+    body: 'Operators and investors from leading global technology, semiconductor, and frontier AI companies — with dedicated research expertise in serving architectures, GPU optimization, and large-scale token generation.',
+  },
+  {
+    title: 'Power & data centers',
+    body: 'A proven track record in power generation and data center development and operations — across blockchain, cloud, AI, and HPC.',
+  },
+  {
+    title: 'Institutional finance',
+    body: 'Deep experience in investment, financing, and deal structuring at leading global financial institutions.',
+  },
+];
+---
+
+<section id="team" class="relative py-24 sm:py-32">
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="max-w-3xl" data-reveal>
+      <p class="text-[11px] font-semibold tracking-[0.25em] text-pulse-400 uppercase">Team</p>
+      <h2 class="mt-3 font-display text-3xl font-bold tracking-tight text-mist-100 sm:text-5xl">
+        Operators, builders, financiers
+      </h2>
+      <p class="mt-5 text-lg leading-relaxed text-mist-400">
+        Innoferra fuses world-class AI model optimization and token-generation expertise with a proven
+        track record in power generation, data center operations, and institutional finance.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+      {
+        pillars.map((pillar, i) => (
+          <div
+            class="rounded-2xl border border-white/8 bg-void-900/70 p-7"
+            data-reveal
+            style={`--reveal-delay: ${i * 100}ms`}
+          >
+            <h3 class="font-display text-lg font-semibold text-mist-100">{pillar.title}</h3>
+            <p class="mt-3 text-[15px] leading-relaxed text-mist-400">{pillar.body}</p>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
