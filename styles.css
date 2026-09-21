@@ -27,20 +27,20 @@
   --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
   --font-display: 'Space Grotesk Variable', var(--font-sans);
 
-  /* deep "void" base */
-  --void-950: #05070f;
-  --void-900: #0a0e1c;
-  --void-850: #0d1224;
-  --void-800: #121a30;
+  /* deep "ink" base — from the brand's #0A1418 */
+  --void-950: #060c10;
+  --void-900: #0a1418;
+  --void-850: #0e1a20;
+  --void-800: #142430;
 
-  /* electric cyan accent */
-  --pulse-300: #7ceaff;
-  --pulse-400: #3fd9ff;
-  --pulse-500: #16c2f0;
+  /* brand bright blue */
+  --pulse-300: #8ed8ff;
+  --pulse-400: #5cc8ff;
+  --pulse-500: #0f8fd1;
 
-  /* warm ember secondary */
-  --ember-400: #ffb454;
-  --ember-500: #f59e0b;
+  /* brand steel blue secondary */
+  --steel-400: #a9c6e0;
+  --steel-500: #4f7ba3;
 
   /* text (AA on void backgrounds) */
   --mist-100: #eef2fb;
@@ -87,7 +87,7 @@ a {
 }
 
 ::selection {
-  background: var(--pulse-500);
+  background: var(--pulse-400);
   color: var(--void-950);
 }
 
@@ -152,7 +152,7 @@ footer::before {
   z-index: 100;
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  background: var(--pulse-500);
+  background: var(--pulse-400);
   color: var(--void-950);
   font-weight: 650;
   text-decoration: none;
@@ -175,12 +175,12 @@ footer::before {
 }
 
 .btn-primary {
-  background: var(--pulse-500);
+  background: var(--pulse-400);
   color: var(--void-950);
 }
 
 .btn-primary:hover {
-  background: var(--pulse-400);
+  background: var(--pulse-300);
 }
 
 .btn-ghost {
@@ -189,7 +189,7 @@ footer::before {
 }
 
 .btn-ghost:hover {
-  border-color: rgba(63, 217, 255, 0.5);
+  border-color: rgba(92, 200, 255, 0.5);
   color: var(--pulse-300);
 }
 
@@ -198,7 +198,7 @@ footer::before {
   position: fixed;
   inset: 0 0 auto 0;
   z-index: 40;
-  background: rgba(5, 7, 15, 0.82);
+  background: rgba(6, 12, 16, 0.82);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
@@ -215,30 +215,15 @@ footer::before {
 
 .brand {
   display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
+  align-items: center;
+  gap: 0.6rem;
   text-decoration: none;
 }
 
-.brand-word {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  color: var(--mist-100);
-}
-
-.brand-word em {
-  font-style: normal;
-  color: var(--pulse-400);
-}
-
-.brand-tag {
-  font-size: 0.6875rem;
-  font-weight: 550;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--mist-500);
+.brand-logo {
+  display: block;
+  height: 30px;
+  width: auto;
 }
 
 .nav-links {
@@ -265,23 +250,19 @@ footer::before {
 .nav-links .nav-cta {
   padding: 0.4rem 1rem;
   border-radius: 999px;
-  background: var(--pulse-500);
+  background: var(--pulse-400);
   color: var(--void-950);
   font-weight: 650;
 }
 
 .nav-links .nav-cta:hover {
-  background: var(--pulse-400);
+  background: var(--pulse-300);
   color: var(--void-950);
 }
 
 @media (max-width: 44rem) {
   html {
     scroll-padding-top: 8.5rem;
-  }
-
-  .brand-tag {
-    display: none;
   }
 
   .nav {
@@ -314,7 +295,7 @@ footer::before {
   height: 640px;
   translate: -50% 0;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(22, 194, 240, 0.16), transparent 70%);
+  background: radial-gradient(closest-side, rgba(92, 200, 255, 0.16), transparent 70%);
   animation: glow-drift 14s ease-in-out infinite alternate;
 }
 
@@ -328,8 +309,8 @@ footer::before {
   inset: 0;
   opacity: 0.35;
   background-image:
-    linear-gradient(rgba(124, 234, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(124, 234, 255, 0.05) 1px, transparent 1px);
+    linear-gradient(rgba(142, 216, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(142, 216, 255, 0.05) 1px, transparent 1px);
   background-size: 56px 56px;
   mask-image: linear-gradient(to bottom, black 40%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, black 40%, transparent);
@@ -345,9 +326,9 @@ footer::before {
 .hero-badge {
   display: inline-block;
   padding: 0.4rem 1rem;
-  border: 1px solid rgba(22, 194, 240, 0.3);
+  border: 1px solid rgba(92, 200, 255, 0.3);
   border-radius: 999px;
-  background: rgba(22, 194, 240, 0.1);
+  background: rgba(92, 200, 255, 0.1);
   font-size: 0.6875rem;
   font-weight: 650;
   letter-spacing: 0.2em;
@@ -364,7 +345,7 @@ footer::before {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--pulse-300), var(--pulse-400), var(--ember-400));
+  background: linear-gradient(90deg, var(--pulse-300), var(--pulse-400), var(--steel-400));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -398,7 +379,7 @@ footer::before {
   padding: 1rem 1.25rem;
   border: 1px solid var(--border-soft);
   border-radius: 12px;
-  background: rgba(10, 14, 28, 0.6);
+  background: rgba(10, 20, 24, 0.6);
 }
 
 .hero-cards dt {
@@ -431,7 +412,7 @@ footer::before {
 .beam-fill {
   height: 100%;
   width: 100%;
-  background: linear-gradient(to top, var(--ember-500), var(--pulse-500), var(--pulse-300));
+  background: linear-gradient(to top, var(--steel-500), var(--pulse-500), var(--pulse-300));
 }
 
 .beam-particle {
@@ -448,7 +429,7 @@ footer::before {
 }
 
 .beam-particle.alt {
-  background: var(--ember-400);
+  background: var(--steel-400);
   animation-delay: 1.4s;
 }
 
@@ -473,7 +454,7 @@ footer::before {
   padding: 1.5rem 1.75rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: rgba(10, 14, 28, 0.7);
+  background: rgba(10, 20, 24, 0.7);
   transition: border-color 0.25s;
 }
 
@@ -482,12 +463,12 @@ footer::before {
 }
 
 .layer.own {
-  border-color: rgba(22, 194, 240, 0.25);
+  border-color: rgba(92, 200, 255, 0.25);
   background: var(--void-850);
 }
 
 .layer.own:hover {
-  border-color: rgba(63, 217, 255, 0.5);
+  border-color: rgba(92, 200, 255, 0.5);
 }
 
 .layer-id {
@@ -499,17 +480,17 @@ footer::before {
   width: 2.25rem;
   height: 2.25rem;
   translate: 0 -50%;
-  border: 1px solid rgba(245, 158, 11, 0.4);
+  border: 1px solid rgba(79, 123, 163, 0.4);
   border-radius: 50%;
   background: var(--void-900);
   font-family: var(--font-display);
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--ember-400);
+  color: var(--steel-400);
 }
 
 .layer.own .layer-id {
-  border-color: rgba(22, 194, 240, 0.4);
+  border-color: rgba(92, 200, 255, 0.4);
   color: var(--pulse-300);
 }
 
@@ -531,7 +512,7 @@ footer::before {
   font-weight: 650;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--ember-400);
+  color: var(--steel-400);
 }
 
 .layer.own .layer-owner {
@@ -553,7 +534,7 @@ footer::before {
 }
 
 .stack-note b {
-  color: var(--ember-400);
+  color: var(--steel-400);
 }
 
 /* ---- Services ----------------------------------------------------------- */
@@ -577,16 +558,16 @@ footer::before {
   padding: 2rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: rgba(10, 14, 28, 0.7);
+  background: rgba(10, 20, 24, 0.7);
   transition: border-color 0.25s;
 }
 
 .service:hover {
-  border-color: rgba(63, 217, 255, 0.4);
+  border-color: rgba(92, 200, 255, 0.4);
 }
 
 .service.alt:hover {
-  border-color: rgba(255, 180, 84, 0.4);
+  border-color: rgba(169, 198, 224, 0.4);
 }
 
 .service-kicker {
@@ -617,11 +598,11 @@ footer::before {
 
 .spec-grid > div {
   padding-left: 1rem;
-  border-left: 1px solid rgba(22, 194, 240, 0.3);
+  border-left: 1px solid rgba(92, 200, 255, 0.3);
 }
 
 .service.alt .spec-grid > div {
-  border-left-color: rgba(245, 158, 11, 0.3);
+  border-left-color: rgba(79, 123, 163, 0.3);
 }
 
 .spec-grid dt {
@@ -677,7 +658,7 @@ footer::before {
 }
 
 .service.alt .service-foot {
-  color: var(--ember-400);
+  color: var(--steel-400);
 }
 
 /* ---- CTA band ----------------------------------------------------------- */
@@ -689,7 +670,7 @@ footer::before {
   position: relative;
   overflow: hidden;
   padding: 2.5rem 1.75rem;
-  border: 1px solid rgba(22, 194, 240, 0.25);
+  border: 1px solid rgba(92, 200, 255, 0.25);
   border-radius: var(--radius);
   background: var(--void-850);
   text-align: center;
@@ -704,7 +685,7 @@ footer::before {
   height: 16rem;
   translate: -50% 0;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(22, 194, 240, 0.14), transparent 70%);
+  background: radial-gradient(closest-side, rgba(92, 200, 255, 0.14), transparent 70%);
 }
 
 .cta-card h2 {
@@ -730,7 +711,7 @@ footer::before {
   padding: 1.5rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: rgba(10, 14, 28, 0.7);
+  background: rgba(10, 20, 24, 0.7);
   overflow: hidden;
 }
 
@@ -791,12 +772,12 @@ footer::before {
   padding: 1.75rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: rgba(10, 14, 28, 0.7);
+  background: rgba(10, 20, 24, 0.7);
   transition: border-color 0.25s;
 }
 
 .edge:hover {
-  border-color: rgba(63, 217, 255, 0.4);
+  border-color: rgba(92, 200, 255, 0.4);
 }
 
 .edge h3 {
@@ -837,7 +818,7 @@ footer::before {
 
 .why-grid > div {
   padding-left: 1.25rem;
-  border-left: 1px solid rgba(22, 194, 240, 0.3);
+  border-left: 1px solid rgba(92, 200, 255, 0.3);
 }
 
 .why-grid h4 {
@@ -857,7 +838,7 @@ footer::before {
   padding: 1.75rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: rgba(10, 14, 28, 0.7);
+  background: rgba(10, 20, 24, 0.7);
   max-width: 20rem;
 }
 
@@ -901,7 +882,7 @@ footer::before {
   padding: 1.75rem;
   border: 1px solid var(--border-soft);
   border-radius: var(--radius);
-  background: rgba(10, 14, 28, 0.7);
+  background: rgba(10, 20, 24, 0.7);
 }
 
 .pillar h3 {
@@ -928,7 +909,7 @@ footer::before {
   height: 420px;
   translate: -50% 0;
   border-radius: 50%;
-  background: radial-gradient(closest-side, rgba(22, 194, 240, 0.1), transparent 70%);
+  background: radial-gradient(closest-side, rgba(92, 200, 255, 0.1), transparent 70%);
   pointer-events: none;
 }
 
@@ -977,8 +958,14 @@ footer {
   gap: 1rem;
 }
 
-.footer-inner .brand-word {
-  font-size: 1.1rem;
+.footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-inner .brand-logo {
+  height: 22px;
 }
 
 .footer-inner small {
